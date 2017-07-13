@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "My first blog",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doituikhovai/blog.git"
+  },
+  "author": "Nam Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doituikhovai/blog/issues"
+  },
+  "homepage": "https://github.com/doituikhovai/blog#readme"
+}
