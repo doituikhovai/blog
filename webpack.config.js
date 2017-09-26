@@ -8,13 +8,17 @@ const prodEnv = (process.env.NODE_ENV === 'production');
 module.exports = {
     entry: {
         app: [
-            './src/views/index.jsx',
+            './src/views/app.jsx',
             './src/assets/style/style.scss'
+        ],
+        vendor: [
+            'bootstrap',
+            'jquery'
         ]
     },
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'dist/[name].js',
+        path: path.resolve(__dirname)
     },
     devtool: "source-map",
     module: {
@@ -27,12 +31,12 @@ module.exports = {
                 })
             },
             {
-                test: /\.(png|jpeg|jpg|gif|svg)$/,
+                test: /\.(png|jpeg|jpg|gif|svg|ico)$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'images/[name].[ext]'
+                            name: 'dist/images/[name].[ext]'
                         }
                     },
                     'img-loader'
@@ -52,13 +56,19 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('style/[name].css'),
+        new ExtractTextPlugin('dist/[name].css'),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: 'popper.js'
+        })
         // new PurifyCSSPlugin({
         //     paths: glob.sync(path.join(__dirname, '../index.html')),
         //     minimize: prodEnv
         // })
     ],
-    watch: true
+    watch: !prodEnv
 };
 
 if (prodEnv) {

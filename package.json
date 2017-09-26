@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "My first blog",
   "main": "index.js",
-  "dependencies": {
-    "ejs": "^2.5.7"
-  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -43,5 +40,10 @@
   "bugs": {
     "url": "https://github.com/doituikhovai/blog/issues"
   },
-  "homepage": "https://github.com/doituikhovai/blog#readme"
+  "homepage": "https://github.com/doituikhovai/blog#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5"
+  }
 }

@@ -6,13 +6,15 @@ const app = express();
 const admin = express();
 const port = process.env.PORT || 4000;
 
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'root',
-//     database: 'blog',
-// });
-// connection.connect();
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'blog',
+});
+connection.connect(function(error){
+    if (error) throw error;
+});
 const localDomain = vhost('www.phamhoangnam-blog.info', express.static('phamhoangnam-blog'));
 
 app.use(localDomain);
