@@ -1,30 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const glob = require('glob');
-const PurifyCSSPlugin = require('purifycss-webpack');
+const hwp = require('html-webpack-plugin');
 const prodEnv = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-    entry: {
-        app: [
-            './src/views/index.jsx',
-            './src/assets/style/style.scss'
-        ]
-    },
+    entry: path.join(__dirname, '/src/views/index.js'),
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        filename: './dist/bundle.js'
     },
     devtool: "source-map",
     module: {
         rules: [
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: 'style-loader'
-                })
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(png|jpeg|jpg|gif|svg)$/,
@@ -39,7 +28,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.jsx$/,
+                test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -52,13 +41,15 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('style/[name].css'),
-        // new PurifyCSSPlugin({
-        //     paths: glob.sync(path.join(__dirname, '../index.html')),
-        //     minimize: prodEnv
-        // })
+        new hwp({
+            template: path.join(__dirname, '/index.html')
+        })
     ],
-    watch: true
+    watch: true,
+    devServer: {
+        port: 8000,
+        contentBase: path.join(__dirname, 'dist')
+    }
 };
 
 if (prodEnv) {
