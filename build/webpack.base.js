@@ -4,11 +4,13 @@ const hwp = require('html-webpack-plugin');
 const prodEnv = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-    entry: path.join(__dirname, '/src/views/index.js'),
+    mode: 'production',
+    entry: path.join(__dirname, '../src/views/index.js'),
     output: {
-        filename: './dist/bundle.js'
+        filename: '[name].js',
+        path: __dirname + '../dist'
     },
-    devtool: "source-map",
+    devtool: 'cheap-module-eval-source-map',
     module: {
         rules: [
             {
@@ -42,7 +44,7 @@ module.exports = {
     },
     plugins: [
         new hwp({
-            template: path.join(__dirname, '/index.html')
+            template: path.join(__dirname, '../index.html')
         })
     ],
     watch: true,
