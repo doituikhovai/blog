@@ -1,11 +1,8 @@
 import ReactDom from 'react-dom';
-import React from 'react';
-
-const el = (
-  <p>Yes yes</p>
-);
+import App from './app'
+import React from 'react'
 
 ReactDom.render(
-  el,
+	<App />,
   document.getElementById('root')
 );

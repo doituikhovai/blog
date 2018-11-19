@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "comma-dangle": "error"
+  },
+  "plugins": [
+    "react"
+  ]
+}

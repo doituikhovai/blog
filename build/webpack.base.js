@@ -46,12 +46,7 @@ module.exports = {
         new hwp({
             template: path.join(__dirname, '../index.html')
         })
-    ],
-    watch: true,
-    devServer: {
-        port: 8000,
-        contentBase: path.join(__dirname, 'dist')
-    }
+    ]
 };
 
 if (prodEnv) {
